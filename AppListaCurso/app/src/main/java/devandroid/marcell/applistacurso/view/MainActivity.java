@@ -28,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         pessoa = new Pessoa();
+        pessoa.setPrimeiroNome("Marcell");
+        pessoa.setSobrenome("Almeida");
+        pessoa.setCursoDesejado("Java");
+        pessoa.setTelefoneContato("81999141577");
 
     }
 }
