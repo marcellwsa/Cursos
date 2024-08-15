@@ -39,10 +39,17 @@ public class Pessoa {
         this.telefoneContato = telefoneContato;
     }
 
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "primeiroNome='" + primeiroNome + '\'' +
+                ", sobrenome='" + sobrenome + '\'' +
+                ", cursoDesejado='" + cursoDesejado + '\'' +
+                ", telefoneContato='" + telefoneContato + '\'' +
+                '}';
+    }
+
     public Pessoa(){
-
-
-
 
     }
 

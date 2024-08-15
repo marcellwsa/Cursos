@@ -1,6 +1,7 @@
 package devandroid.marcell.applistacurso.view;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         dadosPessoa += pessoa.getCursoDesejado();
         dadosPessoa += " Telefone de contato: ";
         dadosPessoa += pessoa.getTelefoneContato();
+
+        Log.i("PooAndroid", pessoa.toString());
 
         int parada = 0;
 
