@@ -17,7 +17,6 @@ import devandroid.marcell.applistacurso.R;
 import devandroid.marcell.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
-    //teste
 
     Pessoa pessoa;
     String dadosPessoa;
