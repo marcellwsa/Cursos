@@ -2,8 +2,10 @@ package devandroid.marcell.applistacurso.view;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -68,9 +70,40 @@ public class MainActivity extends AppCompatActivity {
         edtTxtNomeCursoDesejado.setText(pessoa.getCursoDesejado());
         edtTxtTelefoneContato.setText(pessoa.getTelefoneContato());
 
-        Log.i("PooAndroid", pessoa.toString());
+        btnLimpar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtTxtPrimeiroNome.setText("");
+                edtTxtSobrenome.setText("");
+                edtTxtNomeCursoDesejado.setText("");
+                edtTxtTelefoneContato.setText("");
+            }
+        });
 
-        int parada = 0;
+
+        btnFinalizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Volte sempre", Toast.LENGTH_LONG).show();
+                finish();
+            }
+        });
+
+        btnSalvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pessoa.setPrimeiroNome(edtTxtPrimeiroNome.getText().toString());
+                pessoa.setSobrenome(edtTxtSobrenome.getText().toString());
+                pessoa.setCursoDesejado(edtTxtNomeCursoDesejado.getText().toString());
+                pessoa.setTelefoneContato(edtTxtTelefoneContato.getText().toString());
+
+                Toast.makeText(MainActivity.this, "Salvo", Toast.LENGTH_LONG).show();
+            }
+        });
+
+//        Log.i("PooAndroid", pessoa.toString());
+
+//        int parada = 0;
 
 
     }
