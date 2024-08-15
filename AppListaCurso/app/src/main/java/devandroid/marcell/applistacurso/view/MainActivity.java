@@ -17,7 +17,6 @@ import devandroid.marcell.applistacurso.R;
 import devandroid.marcell.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
-    //teste
 
     Pessoa pessoa;
     String dadosPessoa;
@@ -80,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         btnFinalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,11 +98,5 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Salvo", Toast.LENGTH_LONG).show();
             }
         });
-
-//        Log.i("PooAndroid", pessoa.toString());
-
-//        int parada = 0;
-
-
     }
 }
