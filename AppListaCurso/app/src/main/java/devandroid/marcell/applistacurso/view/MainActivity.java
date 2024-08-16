@@ -14,9 +14,12 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import devandroid.marcell.applistacurso.R;
+import devandroid.marcell.applistacurso.controller.PessoaController;
 import devandroid.marcell.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
+
+    PessoaController controller;
 
     Pessoa pessoa;
     String dadosPessoa;
@@ -39,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        controller = new PessoaController();
+        controller.toString();
 
         pessoa = new Pessoa();
         pessoa.setPrimeiroNome("Marcell");
@@ -97,6 +103,8 @@ public class MainActivity extends AppCompatActivity {
                 pessoa.setTelefoneContato(edtTxtTelefoneContato.getText().toString());
 
                 Toast.makeText(MainActivity.this, "Salvo", Toast.LENGTH_LONG).show();
+
+                controller.salvar(pessoa);
             }
         });
 
