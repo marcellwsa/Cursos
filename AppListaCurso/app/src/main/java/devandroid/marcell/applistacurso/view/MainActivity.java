@@ -19,7 +19,7 @@ import devandroid.marcell.applistacurso.controller.PessoaController;
 import devandroid.marcell.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
-//testeee
+//testeee2
 
     SharedPreferences preferences;
     SharedPreferences.Editor listaVip;
