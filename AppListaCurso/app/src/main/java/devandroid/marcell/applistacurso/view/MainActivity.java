@@ -1,11 +1,11 @@
 package devandroid.marcell.applistacurso.view;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -19,7 +19,6 @@ import java.util.List;
 import devandroid.marcell.applistacurso.R;
 import devandroid.marcell.applistacurso.controller.CursoController;
 import devandroid.marcell.applistacurso.controller.PessoaController;
-import devandroid.marcell.applistacurso.model.Curso2;
 import devandroid.marcell.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     Pessoa pessoa;
     String dadosPessoa;
-    List<Curso2> listaDeCursos;
+    List<String> nomeDosCursos;
 
     EditText edtTxtPrimeiroNome;
     EditText edtTxtSobrenome;
@@ -39,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     Button btnLimpar;
     Button btnSalvar;
     Button btnFinalizar;
+
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         controller.toString();
 
         cursoController = new CursoController();
-        listaDeCursos = cursoController.getListadeCursos();
+        nomeDosCursos = cursoController.dadospParaSpinner();
 
         pessoa = new Pessoa();
         pessoa.setPrimeiroNome("Marcell");
@@ -77,10 +78,16 @@ public class MainActivity extends AppCompatActivity {
         edtTxtSobrenome = findViewById(R.id.edtTxtSobrenome);
         edtTxtNomeCursoDesejado = findViewById(R.id.edtTxtNomeCursoDesejado);
         edtTxtTelefoneContato = findViewById(R.id.edtTxtTelefoneContato);
+        spinner = findViewById(R.id.spinner);
 
         btnLimpar = findViewById(R.id.btnLimpar);
         btnSalvar = findViewById(R.id.btnSalvar);
         btnFinalizar = findViewById(R.id.btnFinalizar);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
+                cursoController.dadospParaSpinner());
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+        spinner.setAdapter(adapter);
 
         edtTxtPrimeiroNome.setText(pessoa.getPrimeiroNome());
         edtTxtSobrenome.setText(pessoa.getSobrenome());
