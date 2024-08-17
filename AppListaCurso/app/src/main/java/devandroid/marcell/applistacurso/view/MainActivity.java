@@ -14,17 +14,23 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.List;
+
 import devandroid.marcell.applistacurso.R;
+import devandroid.marcell.applistacurso.controller.CursoController;
 import devandroid.marcell.applistacurso.controller.PessoaController;
+import devandroid.marcell.applistacurso.model.Curso2;
 import devandroid.marcell.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
 
     //teste
     PessoaController controller;
+    CursoController cursoController;
 
     Pessoa pessoa;
     String dadosPessoa;
+    List<Curso2> listaDeCursos;
 
     EditText edtTxtPrimeiroNome;
     EditText edtTxtSobrenome;
@@ -45,8 +51,12 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+
         controller = new PessoaController(MainActivity.this);
         controller.toString();
+
+        cursoController = new CursoController();
+        listaDeCursos = cursoController.getListadeCursos();
 
         pessoa = new Pessoa();
         pessoa.setPrimeiroNome("Marcell");
