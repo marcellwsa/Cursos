@@ -63,6 +63,9 @@ public class GasEtaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                edtTxtEtanol.setText("");
+                edtTxtGasolina.setText("");
+
             }
         });
 
