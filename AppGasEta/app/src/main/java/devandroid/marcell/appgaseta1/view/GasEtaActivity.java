@@ -1,6 +1,7 @@
 package devandroid.marcell.appgaseta1.view;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,7 +16,7 @@ import devandroid.marcell.appgaseta1.apoio.UtilGasEta;
 
 public class GasEtaActivity extends AppCompatActivity {
 
-//    UtilGasEta utilGasEta = new UtilGasEta();
+    //    UtilGasEta utilGasEta = new UtilGasEta();
     EditText edtTxtGasolina;
     EditText edtTxtEtanol;
 
@@ -25,6 +26,10 @@ public class GasEtaActivity extends AppCompatActivity {
     Button btnLimpar;
     Button btnSalvar;
     Button btnFinalizar;
+
+    double precoGasolina;
+    double precoEtanol;
+    String recomendacao;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,6 +53,31 @@ public class GasEtaActivity extends AppCompatActivity {
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean isDadosOk = true;
+
+                if (TextUtils.isEmpty(edtTxtEtanol.getText())) {
+                    edtTxtEtanol.setError(" Obrigatório");
+                    edtTxtEtanol.requestFocus();
+                    isDadosOk = false;
+                }
+                if (TextUtils.isEmpty(edtTxtGasolina.getText())) {
+                    edtTxtGasolina.setError(" Obrigatório");
+                    edtTxtGasolina.requestFocus();
+                    isDadosOk = false;
+                }
+
+                if (isDadosOk) {
+
+                    precoEtanol = Double.parseDouble(edtTxtEtanol.getText().toString());
+                    precoGasolina = Double.parseDouble(edtTxtGasolina.getText().toString());
+
+                    recomendacao = UtilGasEta.calcularMelhorPreco(precoGasolina, precoEtanol);
+
+                    txtResultado.setText(recomendacao);
+
+                } else {
+                    Toast.makeText(GasEtaActivity.this, "Digite os dados obrigatórios", Toast.LENGTH_LONG).show();
+                }
 
             }
         });
