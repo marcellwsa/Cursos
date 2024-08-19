@@ -59,7 +59,8 @@ public class GasEtaActivity extends AppCompatActivity {
         btnLimpar = findViewById(R.id.btnLimpar);
         btnSalvar = findViewById(R.id.btnSalvar);
         btnFinalizar = findViewById(R.id.btnFinalizar);
-
+//TODO para alterar em um botao alterar, basta chamar o controller.alterar. 9.53 da aula 90
+        //TODO para deletar controller.deletar(id)
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
