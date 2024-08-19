@@ -11,6 +11,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.List;
+
 import devandroid.marcell.appgaseta1.R;
 import devandroid.marcell.appgaseta1.apoio.UtilGasEta;
 import devandroid.marcell.appgaseta1.controller.CombustivelController;
@@ -38,11 +40,15 @@ public class GasEtaActivity extends AppCompatActivity {
     double precoEtanol;
     String recomendacao;
 
+    List<Combustivel> dados;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gaseta);
         controller = new CombustivelController(GasEtaActivity.this);
+
+        dados = controller.getListaDeDados();
 
         edtTxtEtanol = findViewById(R.id.edtTxtEtanol);
         edtTxtGasolina = findViewById(R.id.edtTxtGasolina);
@@ -53,7 +59,8 @@ public class GasEtaActivity extends AppCompatActivity {
         btnLimpar = findViewById(R.id.btnLimpar);
         btnSalvar = findViewById(R.id.btnSalvar);
         btnFinalizar = findViewById(R.id.btnFinalizar);
-
+//TODO para alterar em um botao alterar, basta chamar o controller.alterar. 9.53 da aula 90
+        //TODO para deletar controller.deletar(id)
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,6 +114,8 @@ public class GasEtaActivity extends AppCompatActivity {
 
                 controller.salvar(combustivelGasolina);
                 controller.salvar(combustivelEtanol);
+
+
 
             }
         });
